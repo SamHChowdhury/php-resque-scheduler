@@ -41,6 +41,7 @@ class ResqueScheduler_Worker
 		
 		while (true) {
 			$this->handleDelayedItems();
+			Resque_Event::trigger('afterScheduledItems', $this);
 			$this->sleep();
 		}
 	}
